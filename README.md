@@ -1,11 +1,9 @@
-1. <!-- #huafen.py -->
-[text](huafen.py)
+1. <!-- #huafen.py -->huafen.py
 划分数据集，train：val = 8：2
 INPUT_IMAGES_DIR（所有病例图片.png格式）
 INPUT_LABELS_DIR（所有病例标注.txt格式）
 
-2. <!-- (generate_3ch_symmetry_ECC.py) -->
-[text](generate_3ch_symmetry_ECC.py)
+2. <!-- (generate_3ch_symmetry_ECC.py) -->generate_3ch_symmetry_ECC.py
 三通道构建+ecc配准
 
 3. train_yolo.py
