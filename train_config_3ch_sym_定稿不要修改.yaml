@@ -1,0 +1,71 @@
+task: detect
+mode: train
+
+device: cuda    
+
+# --- 文件和基础设置 ---
+model: yolo11n.pt
+data: sz_data332_3ch_sym_qz_reg/data.yaml 
+
+
+epochs: 200
+imgsz: 1024
+batch: 16
+seed: 42
+
+# --- 优化器和损失权重 ---
+lr0: 0.0015
+lrf: 0.05
+momentum: 0.937
+weight_decay: 0.0001                
+optimizer: 'AdamW'
+
+box: 7.5                             
+cls: 5.5                             
+
+conf: 0.06                
+iou: 0.50      
+dfl: 1.5
+# -----------------------------------------------
+
+# --- 数据增强参数 ---
+degrees: 1.0       
+translate: 0.02
+scale: 0.5
+fliplr: 0.0                          # 必须禁用 (A3 方案的关键)
+hsv_h: 0.015       
+hsv_s: 0.8                           # 增强饱和度
+hsv_v: 0.5                           # 增强亮度
+
+
+# # --- 文件和基础设置 ---
+     
+# epochs: 200
+# imgsz: 1280
+# batch: 16
+# seed: 42
+
+# # --- 优化器和损失权重 (重点修改) ---
+# lr0: 0.001         # 学习率降低，寻找更优解
+# lrf: 0.05
+# momentum: 0.937
+# weight_decay: 0.0001
+# optimizer: 'AdamW'
+
+# box: 7.5
+# cls: 4.0 # 降低分类损失权重，以提高召回率
+# conf: 0.06   # 保持低值
+# iou: 0.50
+# dfl: 1.5
+
+# # --- 文件和基础设置 (重点修改) ---
+# epochs: 200 # 增加训练轮次，以达到性能上限
+
+# # --- 数据增强参数 (次要修改) ---
+# degrees: 1.0
+# translate: 0.02
+# scale: 0.6  # 提高缩放下限，保留小目标
+# fliplr: 0.0
+# hsv_h: 0.015
+# hsv_s: 0.8
+# hsv_v: 0.7 # 增加亮度增强，提高对对比度变化的鲁棒性
